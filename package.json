@@ -1,0 +1,13 @@
+{
+  "name": "web-extension",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start:firefox": "web-ext run --source-dir ./src/"
+  },
+  "devDependencies": {
+    "web-ext": "^7.2.0"
+  }
+}
