@@ -4,4 +4,4 @@
 
 - `yarn install`
 - `web-ext run --source-dir ./src/`
-- got to <https://OpenPodcast.dev> and you should see the Spotify keys on the top of the website
+- got to <https://OpenPodcast.dev> and you should see the Spotify keys at the top of the website
