@@ -4,7 +4,7 @@ const runtime = window.browser || chrome
 function showCredentialsOnWebsite(creds) {
   let message = "No Spotify credentials found, are you logged in on podcasters.spotify.com? (Maybe reload this page.)"
   if (creds.sp_key && creds.sp_dc) {
-    message = `Spotify keys: key: ${creds['sp_key']}, dc: ${creds['sp_dc']} END`
+    message = `Spotify Data: key: ${creds['sp_key']}, dc: ${creds['sp_dc']} END`
   }
   document.getElementById("openpodcast-plugin").innerHTML = message
 }
@@ -17,7 +17,6 @@ async function retrieveSpotifyCookies() {
   const message = await chrome.runtime.sendMessage({ type: "spotifycookies" })
 
   const cookies = message.response
-  console.log(cookies)
   const spotifyCreds = cookies
     //filter what cookies we need and map to a simple lookupobject
     .filter((cookie) => cookie.name === "sp_key" || cookie.name === "sp_dc")

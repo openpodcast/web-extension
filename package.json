@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start:firefox": "web-ext run --source-dir ./src/",
+    "start:firefox": "web-ext run -t firefox-desktop --source-dir ./src/",
     "start:chrome": "web-ext run -t chromium --source-dir ./src/",
     "build": "web-ext build --overwrite-dest --source-dir ./src/"
   },
