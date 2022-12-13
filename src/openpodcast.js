@@ -1,3 +1,5 @@
+const runtime = window.browser || chrome
+
 //insert html at the beginning of the website
 function showCredentialsOnWebsite(creds) {
   let message = "No Spotify credentials found, are you logged in on podcasters.spotify.com? (maybe reload this page)"
@@ -9,10 +11,13 @@ function showCredentialsOnWebsite(creds) {
 
 //communicate with background script to fetch cookies (only background script is allowed to do this)
 async function retrieveSpotifyCookies() {
-  console.log("retrieving spotify keys")
+  console.log("retrieving spotify keys from service worker")
   // sends a message to the background.js and retrieve cookies
-  const message = await browser.runtime.sendMessage({ type: "spotifycookies" })
+
+  const message = await chrome.runtime.sendMessage({ type: "spotifycookies" })
+
   const cookies = message.response
+  console.log(cookies)
   const spotifyCreds = cookies
     //filter what cookies we need and map to a simple lookupobject
     .filter((cookie) => cookie.name === "sp_key" || cookie.name === "sp_dc")
@@ -27,7 +32,7 @@ function isOnOpenPodcastWebsite() {
 }
 
 //wait 1sec until the website is loaded (maybe a problem with docsify) and then check if we are on the right website
-setTimeout(() => {
+setInterval(() => {
   if (isOnOpenPodcastWebsite()) {
     retrieveSpotifyCookies()
   }

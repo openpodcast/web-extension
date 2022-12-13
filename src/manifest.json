@@ -3,13 +3,13 @@
   "version": "1.0",
   "description": "Shows Spotify keys on openpodcast.dev to connect Podcasters Dashboard with Open Podcast Analytics",
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "service_worker": "background.js"
   },
-  "manifest_version": 2,
+  "manifest_version": 3,
   "permissions": [
-    "cookies",
+    "cookies"
+  ],
+  "host_permissions": [
     "*://*.spotify.com/*"
   ],
   "content_scripts": [
