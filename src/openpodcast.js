@@ -2,7 +2,7 @@ const runtime = window.browser || chrome
 
 //insert html at the beginning of the website
 function showCredentialsOnWebsite(creds) {
-  let message = "No Spotify credentials found, are you logged in on podcasters.spotify.com? (maybe reload this page)"
+  let message = "No Spotify credentials found, are you logged in on podcasters.spotify.com? (Maybe reload this page.)"
   if (creds.sp_key && creds.sp_dc) {
     message = `Spotify keys: key: ${creds['sp_key']}, dc: ${creds['sp_dc']} END`
   }
