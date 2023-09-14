@@ -11,8 +11,8 @@ npm install
 Now [install web-ext][webext] and run
 
 ```bash
-web-ext run start:chrome
-web-ext run start:firefox
+make run-chrome
+make run-firefox
 ```
 
 A browser window should open.
