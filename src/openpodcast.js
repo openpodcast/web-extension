@@ -3,6 +3,11 @@ const runtime = window.browser || chrome
 const email = "echo@openpodcast.dev"
 let lastMessage = ""
 
+// Cookies will be deleted by the background script once they have been
+// retrieved Set the flag to true once cookies have been retrieved so we don't
+// show a "no-cookie" message
+let cookiesRetrieved = false
+
 function createEmailSendButton(email, subject, body) {
   const button = document.createElement("button")
   button.innerHTML = "Click here to send credentials to OpenPodcast Team (via Email)"
@@ -62,7 +67,7 @@ async function retrieveSpotifyCookies() {
 
   const cookies = message.response
   const spotifyCreds = cookies
-    //filter what cookies we need and map to a simple lookupobject
+    //filter for cookies we need and map to a simple lookupobject
     .filter((cookie) => cookie.name === "sp_key" || cookie.name === "sp_dc" || cookie.name === "anchorpw_s")
     .reduce((result, cookie) => { result[cookie.name] = cookie.value; return result; }, {})
   //show credentials in the HTML code of the OpenPodcast website
@@ -77,6 +82,11 @@ function isOnOpenPodcastWebsite() {
 //wait 1sec until the website is loaded (maybe a problem with docsify) and then check if we are on the right website
 setInterval(() => {
   if (isOnOpenPodcastWebsite()) {
-    retrieveSpotifyCookies()
+    // Check if cookies haven't been retrieved
+    if (!cookiesRetrieved) {  
+      retrieveSpotifyCookies().then(() => {
+        cookiesRetrieved = true; 
+      });
+    }
   }
 }, 1000)
