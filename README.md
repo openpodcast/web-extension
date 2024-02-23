@@ -1,4 +1,4 @@
-# web-extension to retrieve login data from Spotify and Apple
+# Browser-Extension to retrieve login data from Spotify
 
 ## Testing
 
