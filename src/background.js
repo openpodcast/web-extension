@@ -12,7 +12,7 @@ RUNTIME.runtime.onMessageExternal.addListener(
           break;
         case "credentials":
           const credentials = await retrieveSpotifyCookies();
-          sendResponse({ credentials: credentials ?? {} }); // Return empty object if no credentials
+          sendResponse({ credentials: credentials });
           return true; // Keep the message channel open for the asynchronous response
       }
     }
@@ -55,5 +55,6 @@ const retrieveSpotifyCookies = async () => {
     }, {});
 
   // If no specific credentials are found, it's not an error.
+  // Just return `null` to indicate that no credentials are found.
   return Object.keys(spotifyCredentials).length ? spotifyCredentials : null;
 };

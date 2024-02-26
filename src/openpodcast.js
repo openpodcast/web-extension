@@ -52,11 +52,12 @@ function showCredentialsOnWebsite(credentials) {
   }
 }
 
+// Old flow, which is still used on openpodcast.dev
 // Communicate with background script to fetch cookies (only background script
 // is allowed to do this)
 // Credentials are already validated in the background.js
 // This returns `null` if no credentials are found
-async function retrieveSpotifyCookies() {
+async function retrieveSpotifyCookiesFromBackground() {
   try {
     const message = await RUNTIME.runtime.sendMessage({
       type: "spotifycookies",
@@ -84,7 +85,7 @@ function checkForCredentials() {
     if (isOnOpenPodcastDevWebsite() && !checkInProgress) {
       checkInProgress = true;
       try {
-        const spotifyCredentials = await retrieveSpotifyCookies();
+        const spotifyCredentials = await retrieveSpotifyCookiesFromBackground();
         if (spotifyCredentials) {
           showCredentialsOnWebsite(spotifyCredentials);
         }
