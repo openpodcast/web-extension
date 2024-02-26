@@ -1,6 +1,6 @@
 {
   "name": "OpenPodcast Extension",
-  "version": "1.3",
+  "version": "1.4",
   "description": "Shows Spotify keys on openpodcast.dev to connect a Podcasters Dashboard with Open Podcast Analytics",
   "background": {
     "service_worker": "background.js"
@@ -16,12 +16,20 @@
     {
       "matches": [
         "*://*.openpodcast.dev/*",
-        "*://*.openpodcast.app/*"
+        "*://*.openpodcast.app/*",
+        "*://localhost:*/*"
       ],
       "js": [
         "openpodcast.js"
       ],
-      "run_at": "document_end"
+      "run_at": "document_idle"
     }
-  ]
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://*.openpodcast.dev/*",
+      "*://*.openpodcast.app/*",
+      "*://localhost:*/*"
+    ]
+  }
 }
