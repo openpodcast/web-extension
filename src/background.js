@@ -13,6 +13,11 @@ RUNTIME.runtime.onMessageExternal.addListener(
         case "credentials":
           const credentials = await retrieveSpotifyCookies();
           sendResponse({ credentials: credentials });
+          if (credentials) {
+            // Log out the user from Spotify
+            // to prevent cookies from getting invalidated
+            await removeAllCookies(SPOTIFY_DOMAIN);
+          }
           return true; // Keep the message channel open for the asynchronous response
       }
     }
