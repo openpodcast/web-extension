@@ -17,7 +17,7 @@
       "matches": [
         "*://*.openpodcast.dev/*",
         "*://*.openpodcast.app/*",
-        "*://localhost:*/*"
+        "*://localhost/*"
       ],
       "js": [
         "openpodcast.js"
@@ -28,7 +28,8 @@
   "externally_connectable": {
     "matches": [
       "*://*.openpodcast.dev/*",
-      "*://*.openpodcast.app/*"
+      "*://*.openpodcast.app/*",
+      "*://localhost/*"
     ]
   }
 }
