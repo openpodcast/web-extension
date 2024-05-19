@@ -1,6 +1,10 @@
 # Browser-Extension to retrieve login data from Spotify
 
-## Testing
+## Production
+
+If you have Chrome installed, you can download the latest version of the extension from the [Chrome Web Store][ext].
+
+## Local Development
 
 Install extension dependencies with
 
@@ -28,4 +32,6 @@ In a new browser tab, go to <https://openpodcast.dev> and you should see your Sp
 npm run build
 ```
 
-This will create e.g. `web-extension/web-ext-artifacts/openpodcast_extension-1.1.zip` which can be uploaded to the Chrome Web Store.
+This will create a bundled version of the extension (e.g. `web-extension/web-ext-artifacts/openpodcast_extension-1.1.zip`), which can be uploaded to the Chrome Web Store.
+
+[ext]: https://chromewebstore.google.com/detail/openpodcast-extension/kdgmkjmggjefccigfbeidmaamhbfnkhh
