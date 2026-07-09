@@ -1,5 +1,13 @@
 # Browser-Extension to retrieve login data from Spotify
 
+> [!Tip]
+> 
+> We maintain this extension on a best-effort basis.
+> 
+> It is not needed, if you
+> use our [hosted Open Podcast Platform](https://openpodcast.app/)  
+> where we use the email address for sharing podcast metrics instead.
+
 ## Production
 
 If you have Chrome installed, you can download the latest version of the extension from the [Chrome Web Store][ext].
